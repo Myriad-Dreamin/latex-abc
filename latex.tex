@@ -1,0 +1,172 @@
+\documentclass[UTF8]{ctexart}
+
+\setmainfont{Times New Roman}
+\setCJKmainfont{宋体}
+% math bracket
+%  ()
+\newcommand{\brc}[1]{\left({{}#1}\right)}
+%  []
+\newcommand{\brm}[1]{\left[{{}#1}\right]}
+%  ||
+\newcommand{\brv}[1]{\left|{{}#1}\right|}
+%  {}
+\newcommand{\brf}[1]{\left\{{{}#1}\right\}}
+%  ||
+\newcommand{\brt}[1]{\left\Vert{{}#1}\right\Vert}
+%  <>
+\newcommand{\brg}[1]{\left<{{}#1}\right>}
+%  floor
+\newcommand{\floor}[1]{\lfloor{{}#1}\rfloor}
+%  ceil
+\newcommand{\ceil}[1]{\lceil{{}#1}\rceil}
+
+% font
+\newcommand{\fira}[1]{{\firacode {}#1}}
+
+% abbr command
+\newcommand{\ds}{\displaystyle}
+\newcommand{\pt}{\partial}
+\newcommand{\rint}[2]{\Big|^{{}#1}_{{}#2}}
+\newcommand{\leg}{\left\lgroup}
+\newcommand{\rig}{\right\rgroup}
+
+% math symbol
+\newcommand{\de}{\mathrm{d}}
+\newcommand{\im}{\mathrm{im}}
+\newcommand{\ord}{\mathrm{ord}}
+\newcommand{\cov}{\mathrm{Cov}}
+\newcommand{\lub}{\mathrm{LUB}}
+\newcommand{\glb}{\mathrm{GLB}}
+\newcommand{\var}{\mathrm{Var}}
+\newcommand{\aut}{\mathrm{Aut}}
+\newcommand{\sylow}{\mathrm{Sylow}}
+\newcommand{\xhi}{\mathcal{X}}
+\newcommand{\po}{\mathcal{P}}
+\newcommand{\bi}{\mathrm{b}}
+\newcommand{\rfl}{\mathcal{R}}
+
+% algorithmic symbol
+\newcommand{\gro}{\mathrm{O}}
+
+% control command
+\newcommand{\hfindent}{\hspace*{1em}}
+
+\newfontfamily\firacode{Fira Code}
+\newfontfamily\mincho{MS Mincho}
+
+% math
+\usepackage{ntheorem}
+\usepackage{ulem}
+
+\theoremseparator{ }
+\newtheorem{dft}{Definition}
+\newtheorem{tem}[dft]{Theorem}
+\newtheorem{lem}[dft]{Lemma}
+\newtheorem{epe}[dft]{Example}
+\newtheorem{cor}[dft]{Corollary}
+
+\usepackage{mathrsfs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{cancel}
+%\usepackage{amsthm}
+
+% control
+\usepackage{ifthen}
+\usepackage{intcalc}
+\usepackage{array}
+
+% format
+\usepackage{indentfirst}
+\usepackage{enumerate}
+\usepackage{url}
+\usepackage{setspace}
+
+\usepackage{xcolor}
+
+\definecolor{ballblue}{rgb}{0.13, 0.67, 0.8}
+\definecolor{celestialblue}{rgb}{0.29, 0.59, 0.82}
+\definecolor{bananayellow}{rgb}{1.0, 0.88, 0.21}
+\definecolor{brilliantlavender}{rgb}{0.96, 0.73, 1.0}
+\definecolor{burgundy}{rgb}{0.5, 0.0, 0.13}
+\definecolor{cadmiumorange}{rgb}{0.93, 0.53, 0.18}
+\definecolor{aqua}{rgb}{0.0, 1.0, 1.0}
+\definecolor{auburn}{rgb}{0.43, 0.21, 0.1}
+\definecolor{brass}{rgb}{0.71, 0.65, 0.26}
+\definecolor{tangerine}{rgb}{0.95, 0.52, 0.0}
+\definecolor{portlandorange}{rgb}{1.0, 0.35, 0.21}
+\definecolor{mediumred-violet}{rgb}{0.73, 0.2, 0.52}
+\definecolor{darkpastelpurple}{rgb}{0.59, 0.44, 0.84}
+
+% listing set
+\definecolor{func}{rgb}{0.29, 0.59, 0.82}
+\definecolor{ftype}{rgb}{0.59, 0.44, 0.84}
+\definecolor{cls}{rgb}{1.0, 0.35, 0.21}
+\definecolor{slf}{rgb}{0.73, 0.2, 0.52}
+\definecolor{backg}{HTML}{F7F7F7}
+\definecolor{str}{HTML}{228B22}
+% attestation
+\definecolor{atte}{RGB}{178,34,34}
+
+\usepackage{listings}
+
+\lstset{
+    backgroundcolor = \color{backg},
+    basicstyle = \small,%
+    escapeinside = ``,%
+    keywordstyle = \color{func},% \underbar,%
+    identifierstyle = {},%
+    commentstyle = \color{blue},%
+    stringstyle = \color{str}\ttfamily,%
+    %labelstyle = \tiny,%
+    extendedchars = false,%
+    linewidth = \textwidth,%
+}
+
+\usepackage{geometry}
+
+\geometry{
+    left=2.0cm,
+    right=2.0cm,
+    top=2.5cm,
+    bottom=2.5cm
+}
+
+\usepackage[
+    colorlinks,
+    linkcolor=blue,
+    anchorcolor=blue,
+    citecolor=blue
+]{hyperref}
+
+% table
+\usepackage{csvsimple}
+\usepackage{multirow}
+
+% picture
+\usepackage{graphicx}
+
+
+% graph
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{
+    quotes,
+    angles,
+    matrix,
+    arrows,
+    automata
+}
+
+
+\title{三个贪心算法的证明}
+\author{Myriad Dreamin 2017211279 2017211301}
+\date{}
+
+\begin{document}
+\setlength{\parindent}{2em}
+%\renewcommand{\baselinestretch}{1.5}
+\setlength{\baselineskip}{2.5em}
+\maketitle
+% here for your article
+\end{document}
