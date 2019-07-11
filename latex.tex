@@ -1,7 +1,28 @@
-\documentclass[UTF8]{ctexart}
 
-\setmainfont{Times New Roman}
-\setCJKmainfont{宋体}
+%%%%%%%%
+%% bare_conf.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% See:
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
+%% conference paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+
+\documentclass[conference]{IEEEtran}
+
+%%%%%%%%
+%% Power by Myriad Dreamin
 % math bracket
 %  ()
 \newcommand{\brc}[1]{\left({{}#1}\right)}
@@ -51,9 +72,6 @@
 % control command
 \newcommand{\hfindent}{\hspace*{1em}}
 
-\newfontfamily\firacode{Fira Code}
-\newfontfamily\mincho{MS Mincho}
-
 % math
 \usepackage{ntheorem}
 \usepackage{ulem}
@@ -65,22 +83,24 @@
 \newtheorem{epe}[dft]{Example}
 \newtheorem{cor}[dft]{Corollary}
 
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{float} 
+\usepackage{subfigure}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{ctex}
+\usepackage{booktabs}
+\usepackage{caption}
+\usepackage[colorlinks]{hyperref}
 \usepackage{mathrsfs}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{cancel}
-%\usepackage{amsthm}
 
-% control
-\usepackage{ifthen}
-\usepackage{intcalc}
-\usepackage{array}
+\usepackage{algorithmic}
+\usepackage{algorithm}
 
-% format
-\usepackage{indentfirst}
-\usepackage{enumerate}
-\usepackage{url}
-\usepackage{setspace}
+\usepackage{pgfplots}
+
 
 \usepackage{xcolor}
 
@@ -96,77 +116,65 @@
 \definecolor{tangerine}{rgb}{0.95, 0.52, 0.0}
 \definecolor{portlandorange}{rgb}{1.0, 0.35, 0.21}
 \definecolor{mediumred-violet}{rgb}{0.73, 0.2, 0.52}
-\definecolor{darkpastelpurple}{rgb}{0.59, 0.44, 0.84}
 
-% listing set
-\definecolor{func}{rgb}{0.29, 0.59, 0.82}
-\definecolor{ftype}{rgb}{0.59, 0.44, 0.84}
-\definecolor{cls}{rgb}{1.0, 0.35, 0.21}
-\definecolor{slf}{rgb}{0.73, 0.2, 0.52}
-\definecolor{backg}{HTML}{F7F7F7}
-\definecolor{str}{HTML}{228B22}
-% attestation
-\definecolor{atte}{RGB}{178,34,34}
+\makeatletter
+\newenvironment{breakablealgorithm}
+  {% \begin{breakablealgorithm}
+   \begin{center}
+     \refstepcounter{algorithm}% New algorithm
+     \hrule height.8pt depth0pt \kern2pt% \@fs@pre for \@fs@ruled
+     \renewcommand{\caption}[2][\relax]{% Make a new \caption
+       {\raggedright\textbf{\ALG@name~\thealgorithm} ##2\par}%
+       \ifx\relax##1\relax % #1 is \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##2}%
+       \else % #1 is not \relax
+         \addcontentsline{loa}{algorithm}{\protect\numberline{\thealgorithm}##1}%
+       \fi
+       \kern2pt\hrule\kern2pt
+     }
+  }{% \end{breakablealgorithm}
+     \kern2pt\hrule\relax% \@fs@post for \@fs@ruled
+   \end{center}
+  }
+\makeatother
 
-\usepackage{listings}
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
 
-\lstset{
-    backgroundcolor = \color{backg},
-    basicstyle = \small,%
-    escapeinside = ``,%
-    keywordstyle = \color{func},% \underbar,%
-    identifierstyle = {},%
-    commentstyle = \color{blue},%
-    stringstyle = \color{str}\ttfamily,%
-    %labelstyle = \tiny,%
-    extendedchars = false,%
-    linewidth = \textwidth,%
-}
-
-\usepackage{geometry}
-
-\geometry{
-    left=2.0cm,
-    right=2.0cm,
-    top=2.5cm,
-    bottom=2.5cm
-}
-
-\usepackage[
-    colorlinks,
-    linkcolor=blue,
-    anchorcolor=blue,
-    citecolor=blue
-]{hyperref}
-
-% table
-\usepackage{csvsimple}
-\usepackage{multirow}
-
-% picture
-\usepackage{graphicx}
-
-
-% graph
-\usepackage{tikz}
-\usepackage{pgfplots}
-\usetikzlibrary{
-    quotes,
-    angles,
-    matrix,
-    arrows,
-    automata
-}
-
-
-\title{三个贪心算法的证明}
-\author{Myriad Dreamin 2017211279 2017211301}
-\date{}
 
 \begin{document}
-\setlength{\parindent}{2em}
-%\renewcommand{\baselinestretch}{1.5}
-\setlength{\baselineskip}{2.5em}
+
+\title{各种单源最短路算法及其时间复杂度简述}
+
+
+\author{\IEEEauthorblockN{Myriad Dreamin}
+\IEEEauthorblockA{School of Computer Science\\
+Beijing University of\\
+Posts and Telecommunications\\
+Beijing\\
+Email: camiyoru@gmail.com}
+}
+
 \maketitle
-% here for your article
+
+\begin{abstract}
+    This paper introduces several single-source shortest path algorithms, and uses mathematics and graph theory to analyze and compare the average case time complexity and worst case time complexity of these algorithms in general and specific graphs.
+\end{abstract}
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+% that's all folks
 \end{document}
+
+
